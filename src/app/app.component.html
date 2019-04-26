@@ -1,0 +1,69 @@
+<mat-form-field class="search-box">
+  <mat-placeholder>
+    <mat-icon>search</mat-icon> Search
+  </mat-placeholder>
+  <input matInput>
+</mat-form-field>
+
+<div class="toolbar">
+  <div class="toolbar-row">
+    <div class="toolbar-column c1">Select Month</div>
+    <div class="toolbar-column">
+      <mat-form-field>
+        <mat-label>Year</mat-label>
+        <mat-select [(value)]="currentYear">
+          <mat-option *ngFor="let year of years" [value]="year">
+            {{year}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="toolbar-column">
+      <mat-form-field>
+        <mat-label>Month</mat-label>
+        <mat-select [(ngModel)]="currentMonth">
+          <mat-option *ngFor="let month of months" [value]="month">
+            {{month}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="toolbar-column">
+      <button mat-raised-button color="primary" (click)="thisMonth()">This Month</button>
+    </div>
+    <div class="toolbar-column">
+      <button mat-raised-button color="primary" (click)="lastMonth()">Last Month</button>
+    </div>
+  </div>
+  <div class="toolbar-row">
+    <div class="toolbar-column c1">Select Week</div>
+    <div class="toolbar-column c2">
+
+      <mat-form-field>
+        <mat-label>Week</mat-label>
+        <mat-select [(ngModel)]="selectedWeek">
+          <mat-option *ngFor="let week of weeks" [value]="week">
+            {{week}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-radio-group aria-label="Week start" [(ngModel)]="weekStart">
+        <mat-radio-button value="m">Monday</mat-radio-button>
+        <mat-radio-button value="s">Sunday</mat-radio-button>
+      </mat-radio-group>
+
+    </div>
+    <div class="toolbar-column">
+      <button mat-raised-button color="primary" (click)="thisWeek()">This Week</button>
+    </div>
+    <div class="toolbar-column">
+      <button mat-raised-button color="primary" (click)="lastWeek()">Last Week</button>
+
+    </div>
+  </div>
+</div>
+
+<div class="chart">
+  <app-chart></app-chart>
+</div>
